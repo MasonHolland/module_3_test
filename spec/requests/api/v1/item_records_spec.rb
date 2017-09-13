@@ -18,7 +18,7 @@ RSpec.describe "items requests" do
 
     expect(items.count).to eq(3)
     expect(items.first).to have_key("id")
-    expect(items.first["id"]).to eq(item_1.name)
+    expect(items.first["id"]).to eq(item_1.id)
     expect(items.first).to have_key("name")
     expect(items.first["name"]).to eq(item_1.name)
     expect(items.first).to have_key("description")
@@ -42,7 +42,7 @@ RSpec.describe "items requests" do
     item = JSON.parse(response.body)
 
     expect(item).to have_key("id")
-    expect(item["id"]).to eq(item_1.name)
+    expect(item["id"]).to eq(item_1.id)
     expect(item).to have_key("name")
     expect(item["name"]).to eq(item_1.name)
     expect(item).to have_key("description")
@@ -71,20 +71,19 @@ RSpec.describe "items requests" do
   it "post creates a new item" do
     item_1 = {name: "Green Pan", description: "A non stick great pan", image_url: "google.com"}
 
-    post "/api/v1/items?name=#{item_1.name}&description=#{item_1.description}&image_url=#{item_1.image_url}"
+    post "/api/v1/items?name=#{item_1[:name]}&description=#{item_1[:description]}&image_url=#{item_1[:image_url]}"
 
     expect(response.status).to eq(201)
 
     new_item = JSON.parse(response.body)
 
     expect(new_item).to have_key("id")
-    expect(new_item["id"]).to eq(item_1.name)
     expect(new_item).to have_key("name")
-    expect(new_item["name"]).to eq(item_1.name)
+    expect(new_item["name"]).to eq(item_1[:name])
     expect(new_item).to have_key("description")
-    expect(new_item["description"]).to eq(item_1.description)
+    expect(new_item["description"]).to eq(item_1[:description])
     expect(new_item).to have_key("image_url")
-    expect(new_item["image_url"]).to eq(item_1.image_url)
+    expect(new_item["image_url"]).to eq(item_1[:image_url])
     expect(new_item).to_not have_key("created_at")
     expect(new_item).to_not have_key("updated_at")
   end
