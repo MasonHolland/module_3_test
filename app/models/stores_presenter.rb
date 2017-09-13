@@ -1,4 +1,5 @@
 class StoresPresenter
+  attr_reader :zip, :stores
 
   def initialize(zip)
     @zip              = zip
@@ -12,7 +13,4 @@ class StoresPresenter
       Store.new(store)
     end
   end
-
-  private
-    attr_reader :zip
 end
