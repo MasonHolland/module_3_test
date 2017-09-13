@@ -1,9 +1,9 @@
 class StoresPresenter
 
   def initialize(zip)
-    @zip = zip
+    @zip              = zip
     @best_buy_service = BestBuyService.new
-    @stores = []
+    @stores           = []
     compile_stores
   end
 
