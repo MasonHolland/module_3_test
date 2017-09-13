@@ -14,9 +14,9 @@ RSpec.feature "search for stores" do
     it "returns 10 relevant stores" do
       visit root_path
 
-      fill_in "zip-search-input", with: "80202"
+      fill_in "Zip search field", with: "80202"
 
-      click_button "glyphicon-search"
+      click_button "search"
 
       expect(current_path).to eq(search_path)
 
