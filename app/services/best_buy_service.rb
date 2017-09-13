@@ -15,7 +15,7 @@ class BestBuyService
       req.params['pageSize'] = '10'
       req.params['apiKey'] = ENV['bb_api_key']
     end
-    JSON.parse(response.body)
+    JSON.parse(response.body)["stores"]
   end
 
   private
