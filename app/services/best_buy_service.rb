@@ -12,7 +12,7 @@ class BestBuyService
       req.url   "/v1/stores(area(#{zip},25))"
       req.params['format'] = 'json'
       req.params['show'] = 'longName,city,storeType,phone,distance'
-      req.params['pageSize'] = '10'
+      req.params['pageSize'] = '17'
       req.params['apiKey'] = ENV['bb_api_key']
     end
     JSON.parse(response.body)["stores"]

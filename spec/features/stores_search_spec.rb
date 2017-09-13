@@ -23,6 +23,7 @@ RSpec.feature "search for stores" do
       stores = page.all(".store")
       expect(stores.count).to eq(10)
       expect(page).to have_content("Stores within 25 miles of 80202")
+      expect(page).to have_content("17 Total Stores")
       expect(stores.first).to have_content "Name:"
       expect(stores.first).to have_content "City:"
       expect(stores.first).to have_content "Distance:"

@@ -1,8 +1,10 @@
 <div class="container">
   <h2>Stores within 25 miles of <%= @stores_presenter.zip %></h2>
   <hr>
+  <h3><%= @stores_presenter.stores.count %> Total Stores</h3>
+  <hr>
   <ul>
-    <% @stores_presenter.stores.each do |store| %>
+    <% @stores_presenter.stores.first(10).each do |store| %>
     <li class="store">Name: <%= store.name %>
       <ul>
         <li>City: <%= store.city %></li>
